@@ -1,0 +1,71 @@
+# ~/.config/i3status/config
+
+general {
+        output_format = "i3bar"
+        colors = true
+        interval = 1
+        color_good = "#57ffbd"
+        color_degraded = "#ffd357"
+        color_bad = "#fe7457"
+        separator = ">>"
+}
+
+order += "cpu_usage"
+order += "memory"
+order += "disk /"
+order += "wireless _first_"
+order += "ethernet _first_"
+order += "battery all"
+order += "volume master"
+order += "time"
+
+cpu_usage {
+        format = "CPU %usage"
+        max_threshold = 75
+}
+
+memory {
+        format = "RAM %used"
+        threshold_degraded = "10%"
+        threshold_critical = "5%"
+}
+
+disk "/" {
+        format = "%avail"
+        low_threshold = "10"
+        threshold_type = "percentage_avail"
+        format_below_threshold = "%avail"
+}
+
+wireless _first_ {
+        format_up = "%essid %quality"
+        format_down = "WIFI down"
+}
+
+ethernet _first_ {
+        format_up = "%ip"
+        format_down = "down"
+}
+
+battery all {
+        format = "BAT:%status %percentage"
+        format_down = "no bat"
+        status_chr = " "
+        status_bat = " "
+        status_unk = " "
+        status_full = " "
+        low_threshold = 30
+        threshold_type = "percentage"
+        integer_battery_capacity = true
+}
+
+volume master {
+        format = "VOL: %volume"
+        format_muted = "VOL: muted"
+        device = "default"
+        mixer = "Master"
+}
+
+time {
+        format = "%d/%m/%Y, %H:%M "
+}
