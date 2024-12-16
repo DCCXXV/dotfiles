@@ -1,0 +1,90 @@
+* {
+   bg0:     #202020ee;
+   bg1:     #2d2d2dee;
+   fg0:     #f2f0e3;
+   fg1:     #d0cec2;
+   orange:  #fe7457;
+   green:   #57ffbd;
+   blue:    #57bdff;
+   yellow:  #ffd357;
+
+   background-color: transparent;
+   text-color:      @fg0;
+
+   margin:  0;
+   padding: 0;
+   spacing: 0;
+}
+
+window {
+   background-color: @bg0;
+   border-color:     @orange;
+   border:           1;
+   padding:          12;
+}
+
+inputbar {
+   spacing:    8px;
+   padding:    8px;
+   background-color: @bg1;
+   children:   [ prompt,entry,num-filtered-rows ];
+}
+
+prompt {
+   text-color: @orange;
+}
+
+entry {
+   placeholder:        "Search";
+   placeholder-color:  @fg1;
+}
+
+listview {
+   lines:      7;
+   columns:    4;
+   fixed-height: false;
+   spacing:      4px;
+   scrollbar:    false;
+   padding:      8px 0 0;
+}
+
+element {
+   padding:    8px;
+   spacing:    8px;
+}
+
+element normal normal {
+   text-color: @fg0;
+}
+
+element normal urgent {
+   text-color: @fg0;
+}
+
+element normal active {
+   text-color: @fg0;
+}
+
+element selected {
+   background-color: @bg1;
+   text-color:       @green;
+}
+
+element selected normal {
+   background-color: @bg1;
+   text-color:       @green;
+}
+
+element selected urgent {
+   background-color: @bg1;
+   text-color:       @green;
+}
+
+element selected active {
+   background-color: @bg1;
+   text-color:       @green;
+}
+
+element-text {
+   text-color: inherit;
+}

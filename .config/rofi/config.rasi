@@ -1,0 +1,28 @@
+configuration {
+    modi: "run,drun,window";
+    font: "IosevkaTermSlab Nerd Font 14";
+    terminal: "alacritty";
+    isplay-drun: " ";
+    display-run: " ";
+    display-window: " ";
+
+    sorting-method: "fzf";
+    sort: true;
+    matching: "fuzzy";
+    drun-match-fields: "name,generic,exec,categories";
+    drun-display-format: "{name}";
+
+    // Keybindings
+    kb-row-up:     "Up,Super+k";
+    kb-row-down:   "Down,Super+j";
+    kb-move-char-back: "Left,Super+h";
+    kb-move-char-forward: "Right,Super+l";
+
+    kb-accept-entry: "Return,KP_Enter";
+    kb-remove-to-eol: "Control+Shift+e";
+    kb-mode-next: "Shift+Right,Control+Tab";
+    kb-mode-previous: "Shift+Left,Control+ISO_Left_Tab";
+    kb-remove-char-back: "BackSpace";
+}
+
+@theme "quasar"
