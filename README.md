@@ -52,7 +52,7 @@ First, check out the dotfiles repo in your $HOME directory using git
 
 ```
 cd $HOME
-git clone git@github.com/dreamsofautonomy/dotfiles.git
+git clone git@github.com/DCCXXV/dotfiles.git
 cd dotfiles
 ```
 
