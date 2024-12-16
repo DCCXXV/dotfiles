@@ -4,9 +4,9 @@ This directory contains the dotfiles for my system.
 
 ## Screenshots
 
-![Screenshot 1](screenshots/screenshots1.png)
+![Screenshot 1](screenshots/screenshot1.png)
 
-![Screenshot 2](screenshots/screenshots2.png)
+![Screenshot 2](screenshots/screenshot2.png)
 
 ## Requirements
 
