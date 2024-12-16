@@ -1,6 +1,12 @@
-# My dotfiles
+# Quasar dotfiles
 
-This directory contains the dotfiles for my system
+This directory contains the dotfiles for my system.
+
+## Screenshots
+
+![Screenshot 1](screenshots/screenshots1.png)
+
+![Screenshot 2](screenshots/screenshots2.png)
 
 ## Requirements
 
@@ -45,12 +51,13 @@ sudo pacman -S stow
 First, check out the dotfiles repo in your $HOME directory using git
 
 ```
-$ git clone git@github.com/dreamsofautonomy/dotfiles.git
-$ cd dotfiles
+cd $HOME
+git clone git@github.com/dreamsofautonomy/dotfiles.git
+cd dotfiles
 ```
 
 then use GNU stow to create symlinks
 
 ```
-$ stow .
+stow .
 ```
