@@ -194,8 +194,11 @@ default_border pixel 2px
 
 # Screenshots
 bindsym Print exec --no-startup-id flameshot gui -c --path $HOME/Pictures/Screenshots/ --clipboard
-
 bindsym $mod+p exec --no-startup-id flameshot gui -c --path $HOME/Pictures/Screenshots/ --clipboard
+
+# Screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +20
+bindsym XF86MonBrightnessDown exec --no-startup-id "if [ $(brightnessctl g) -gt 40 ]; then brightnessctl s 20-; else brightnessctl s 40; fi"
 
 
 font pango:IosevkaTermSlab Nerd Font 16px
