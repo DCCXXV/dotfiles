@@ -4,9 +4,9 @@ This directory contains the dotfiles for my system.
 
 ## Screenshots
 
-![Screenshot 1](screenshots/screenshots1.png)
+![Screenshot 1](screenshots/screenshot1.png)
 
-![Screenshot 2](screenshots/screenshots2.png)
+![Screenshot 2](screenshots/screenshot2.png)
 
 ## Requirements
 
@@ -52,7 +52,7 @@ First, check out the dotfiles repo in your $HOME directory using git
 
 ```
 cd $HOME
-git clone git@github.com/dreamsofautonomy/dotfiles.git
+git clone git@github.com/DCCXXV/dotfiles.git
 cd dotfiles
 ```
 
