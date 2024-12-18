@@ -200,6 +200,17 @@ bindsym $mod+p exec --no-startup-id flameshot gui -c --path $HOME/Pictures/Scree
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +20
 bindsym XF86MonBrightnessDown exec --no-startup-id "if [ $(brightnessctl g) -gt 40 ]; then brightnessctl s 20-; else brightnessctl s 40; fi"
 
+# Deactivate gnome auto sleep
+exec --no-startup-id gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
+exec --no-startup-id gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'nothing'
+
+# Configurate xset
+exec --no-startup-id xset s off
+exec --no-startup-id xset -dpms
+exec --no-startup-id xset s noblank
+
+# Screenlock
+exec --no-startup-id xss-lock -- ~/scripts/lock.sh
 
 font pango:IosevkaTermSlab Nerd Font 16px
 
@@ -248,4 +259,5 @@ bar {
         urgent_workspace    $accent-green   $accent-green   $bg-color
         binding_mode       $accent-yellow   $accent-yellow  $bg-color
     }
+
 }
