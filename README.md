@@ -1,6 +1,6 @@
 # Quasar dotfiles
 
-This directory contains the dotfiles for my system.
+This repo contains the dotfiles for my system.
 
 ## Screenshots
 
