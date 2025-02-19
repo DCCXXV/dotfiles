@@ -31,7 +31,7 @@ memory {
 }
 
 disk "/" {
-        format = "  %avail"
+        format = "  DISK %avail"
         low_threshold = "10"
         threshold_type = "percentage_avail"
         format_below_threshold = "%avail"
@@ -44,7 +44,7 @@ wireless _first_ {
 
 ethernet _first_ {
         format_up = "󰈀  %ip"
-        format_down = "down"
+        format_down = "ETH down"
 }
 
 battery all {
