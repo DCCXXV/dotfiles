@@ -1,12 +1,14 @@
-# Quasar dotfiles
+# DCCXXV's dotfiles
 
-This repo contains the dotfiles for my system.
+This repo contains the dotfiles for my system. Currently using rosé pine theme.
 
 ## Screenshots
 
-![Screenshot 1](screenshots/screenshot1.png)
+![Screenshot 1](screenshots/1.png)
 
-![Screenshot 2](screenshots/screenshot2.png)
+![Screenshot 2](screenshots/2.png)
+
+![Screenshot 2](screenshots/3.png)
 
 ## Requirements
 

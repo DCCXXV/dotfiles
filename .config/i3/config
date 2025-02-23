@@ -12,7 +12,7 @@
 set $mod Mod1
 
 # Wallpaper
-exec --no-startup-id feh --bg-scale $HOME/dotfiles/Wallpapers/sky1.jpg
+exec --no-startup-id feh --bg-scale $HOME/dotfiles/wallpapers/bg.jpg
 
 # Transparency
 exec_always --no-startup-id picom -f
@@ -227,24 +227,31 @@ font pango:IosevkaTermSlab Nerd Font 16px
 # Gaps
 gaps inner 10
 
-# Colores base
-set $bgd-color           #171717
-set $bg-color            #202020
-set $bgl-color           #252525
-set $fg-color            #f2f0e3
-set $accent-green        #57ffbd
-set $accent-orange       #fe7457
-set $accent-blue         #57bdff
-set $accent-yellow       #ffd357
+# set primary Rosé Pine colorscheme colors
+set $base           #191724
+set $surface        #1f1d2e
+set $overlay        #26233a
+set $muted          #6e6a86
+set $subtle         #908caa
+set $text           #e0def4
+set $love           #eb6f92
+set $gold           #f6c177
+set $rose           #ebbcba
+set $pine           #31748f
+set $foam           #9ccfd8
+set $iris           #c4a7e7
+set $highlightlow   #21202e
+set $highlightmed   #403d52
+set $highlighthigh  #524f67
 
-# Colores de ventanas
-client.focused          $accent-orange  $accent-orange  $bg-color       $accent-orange    $accent-orange
-client.focused_inactive $bgl-color       $bgl-color       $fg-color       $bgl-color       $bgl-color
-client.unfocused        $bgl-color       $bgl-color       $fg-color       $bgl-color       $bgl-color
-client.urgent           $accent-green   $accent-green   $bg-color       $accent-green   $accent-green
-client.placeholder      $bgl-color       $bgl-color       $fg-color       $bgl-color       $bgl-color
-
-client.background       $bg-color
+# Teming border and Windows --------------
+# target                 title     bg    text   indicator  border
+client.focused           $iris     $iris $base  $iris      $iris
+client.focused_inactive  $text     $text $base  $subtle    $surface
+client.unfocused         $text     $text $base  $overlay   $overlay
+client.urgent            $love     $text $base  $love      $love
+client.placeholder       $base     $base $text  $overlay   $overlay
+client.background        $base
 
 # Barra de estado
 bar {
@@ -254,15 +261,15 @@ bar {
     position top
 
     colors {
-        background $bgd-color
-        statusline $fg-color
-        separator  $accent-orange
+        background $base
+        statusline $text
+        separator  $iris
 
         # Workspaces en la barra
-        focused_workspace   $accent-orange  $accent-orange  $bg-color
-        active_workspace    $bg-color       $bg-color       $fg-color
-        inactive_workspace  $bg-color       $bg-color       $fg-color
-        urgent_workspace    $accent-green   $accent-green   $bg-color
-        binding_mode        $accent-yellow  $accent-yellow  $bg-color
+        focused_workspace   $iris       $base       $text
+        active_workspace    $base       $base       $text
+        inactive_workspace  $text       $text       $base
+        urgent_workspace    $love       $love       $base
+        binding_mode        $pine       $pine       $base
     }
 }
