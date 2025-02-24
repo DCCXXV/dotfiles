@@ -1,7 +1,4 @@
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-vim.opt.softtabstop = 4
+require("dccxxv")
 
 require("pam").manage({
     { source = "mvllow/pam.nvim" },
@@ -34,6 +31,7 @@ require("pam").manage({
       	)
    	end,
     },
+    { source = "nvim-lualine/lualine.nvim" },
     { source = "hrsh7th/nvim-cmp" },
     { source = "hrsh7th/cmp-nvim-lsp" },
     { source = "hrsh7th/cmp-buffer" },
@@ -45,7 +43,6 @@ require("pam").manage({
     { source = "williamboman/mason-lspconfig.nvim" },
     { source = "neovim/nvim-lspconfig",
     	config = function()
-      	-- configuración de Mason para instalar automáticamente algunos LSPs
       	require("mason").setup()
       	require("mason-lspconfig").setup({
             ensure_installed = { "pyright", "gopls", "lua_ls" }
@@ -53,7 +50,6 @@ require("pam").manage({
 
       	local nvim_lsp = require("lspconfig")
       	local on_attach = function(client, bufnr)
-        -- configura keymaps y otras opciones para el buffer
         local opts = { noremap = true, silent = true }
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
         vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
@@ -70,7 +66,6 @@ require("pam").manage({
 })
 
 local cmp = require'cmp'
-
 cmp.setup({
     snippet = {
         expand = function(args)
@@ -100,14 +95,18 @@ cmp.setup({
             fallback()
         end
     end,
-  },
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-    { name = 'buffer' },
-    { name = 'path' },
-  },
+    },
+    sources = {
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' },
+        { name = 'buffer' },
+        { name = 'path' },
+    },
 })
+
+
+require("lualine").get_config()
+require("lualine").setup()
 
 require("rose-pine").setup({
   variant = "default",
