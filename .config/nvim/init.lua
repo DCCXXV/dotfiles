@@ -20,6 +20,13 @@ require("pam").manage({
             { source = "nvim-lua/plenary.nvim" }
         }
     },
+    {
+        source = "nvim-telescope/telescope.nvim",
+        tag = "0.1.8",
+        dependencies = {
+            { source = "nvim-lua/plenary.nvim" }
+        }
+    },
     { source = "nvim-tree/nvim-web-devicons" },
     {
 	source = "goolord/alpha-nvim",
@@ -43,26 +50,29 @@ require("pam").manage({
     { source = "williamboman/mason-lspconfig.nvim" },
     { source = "neovim/nvim-lspconfig",
     	config = function()
-      	require("mason").setup()
-      	require("mason-lspconfig").setup({
-            ensure_installed = { "pyright", "gopls", "lua_ls" }
-      	})
+      	    require("mason").setup()
+      	    require("mason-lspconfig").setup({
+                ensure_installed = { "pyright", "gopls", "lua_ls" }
+      	    })
 
-      	local nvim_lsp = require("lspconfig")
-      	local on_attach = function(client, bufnr)
-        local opts = { noremap = true, silent = true }
-        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-      	end
+      	    local nvim_lsp = require("lspconfig")
+      	        local on_attach = function(client, bufnr)
+                local opts = { noremap = true, silent = true }
+                vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+                vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+      	    end
 
-        local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+            local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-      	nvim_lsp.pyright.setup({ on_attach = on_attach })
-      	nvim_lsp.gopls.setup({ on_attach = on_attach })
-      	nvim_lsp.lua_ls.setup({ on_attach = on_attach })
+      	    nvim_lsp.pyright.setup({ on_attach = on_attach })
+      	    nvim_lsp.gopls.setup({ on_attach = on_attach })
+      	    nvim_lsp.lua_ls.setup({ on_attach = on_attach })
     	end,
   },
+  { source="smithbm2316/centerpad.nvim" },
+  { source="OXY2DEV/markview.nvim" },
+  { source="lukas-reineke/indent-blankline.nvim" },
 })
 
 local cmp = require'cmp'
@@ -82,11 +92,11 @@ cmp.setup({
       select = true,
     }),
     ['<Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      else
-        fallback()
-      end
+        if cmp.visible() then
+            cmp.select_next_item()
+        else
+            fallback()
+        end
     end,
     ['<S-Tab>'] = function(fallback)
         if cmp.visible() then
@@ -104,9 +114,10 @@ cmp.setup({
     },
 })
 
-
 require("lualine").get_config()
 require("lualine").setup()
+
+require("ibl").setup()
 
 require("rose-pine").setup({
   variant = "default",
