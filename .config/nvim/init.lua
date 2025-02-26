@@ -31,12 +31,12 @@ require("pam").manage({
     {
 	source = "goolord/alpha-nvim",
 	config = function()
-      	local startify = require("alpha.themes.startify")
-      	startify.file_icons.provider = "devicons"
-      	require("alpha").setup(
+        local startify = require("alpha.themes.startify")
+        startify.file_icons.provider = "devicons"
+        require("alpha").setup(
             startify.config
-      	)
-   	end,
+        )
+    end,
     },
     { source = "nvim-lualine/lualine.nvim" },
     { source = "hrsh7th/nvim-cmp" },
@@ -49,30 +49,31 @@ require("pam").manage({
     { source = "williamboman/mason.nvim" },
     { source = "williamboman/mason-lspconfig.nvim" },
     { source = "neovim/nvim-lspconfig",
-    	config = function()
-      	    require("mason").setup()
-      	    require("mason-lspconfig").setup({
+        config = function()
+            require("mason").setup()
+            require("mason-lspconfig").setup({
                 ensure_installed = { "pyright", "gopls", "lua_ls" }
-      	    })
+            })
 
-      	    local nvim_lsp = require("lspconfig")
-      	        local on_attach = function(client, bufnr)
+            local nvim_lsp = require("lspconfig")
+            local on_attach = function(client, bufnr)
                 local opts = { noremap = true, silent = true }
                 vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
                 vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
                 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-      	    end
+            end
 
             local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-      	    nvim_lsp.pyright.setup({ on_attach = on_attach })
-      	    nvim_lsp.gopls.setup({ on_attach = on_attach })
-      	    nvim_lsp.lua_ls.setup({ on_attach = on_attach })
+            nvim_lsp.pyright.setup({ on_attach = on_attach })
+            nvim_lsp.gopls.setup({ on_attach = on_attach })
+            nvim_lsp.lua_ls.setup({ on_attach = on_attach })
     	end,
   },
   { source="smithbm2316/centerpad.nvim" },
   { source="OXY2DEV/markview.nvim" },
   { source="lukas-reineke/indent-blankline.nvim" },
+  { source="marioortizmanero/adoc-pdf-live.nvim" },
 })
 
 local cmp = require'cmp'
@@ -118,6 +119,8 @@ require("lualine").get_config()
 require("lualine").setup()
 
 require("ibl").setup()
+
+require('adoc_pdf_live').setup()
 
 require("rose-pine").setup({
   variant = "default",

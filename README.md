@@ -1,6 +1,10 @@
 # DCCXXV's dotfiles
 
-This repo contains the dotfiles for my system. Currently using rosé pine theme.
+This repository contains my sistem's configuration files (dotfiles).
+
+One click install using GNU stow. More information in [Installation](#installation)
+
+Currently using rosé pine theme.
 
 ## Screenshots
 
@@ -59,6 +63,9 @@ cd dotfiles
 ```
 
 then use GNU stow to create symlinks
+
+>![IMPORTANT]
+>Remove any file where stow will create the symlinks before running it, otherwise it will do nothing.
 
 ```
 stow .
