@@ -225,7 +225,7 @@ font pango:IosevkaTermSlab Nerd Font 16px
 # finds out, if available)
 
 # Gaps
-gaps inner 10
+gaps inner 7
 
 # set primary Rosé Pine colorscheme colors
 set $base           #191724
@@ -266,9 +266,9 @@ bar {
         separator  $iris
 
         # Workspaces en la barra
-        focused_workspace   $iris       $base       $text
+        focused_workspace   $text       $text       $base
         active_workspace    $base       $base       $text
-        inactive_workspace  $text       $text       $base
+        inactive_workspace  $base       $base       $text
         urgent_workspace    $love       $love       $base
         binding_mode        $pine       $pine       $base
     }

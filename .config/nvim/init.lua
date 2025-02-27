@@ -2,7 +2,13 @@ require("dccxxv")
 
 require("pam").manage({
     { source = "mvllow/pam.nvim" },
-    { source = "rose-pine/neovim", as = "rose-pine" },
+    {
+        source = "rose-pine/neovim",
+        as = "rose-pine",
+        config = function()
+            require("rose-pine")
+        end,
+    },
     {
         source = "nvim-treesitter/nvim-treesitter",
         post_checkout = function()
@@ -27,18 +33,20 @@ require("pam").manage({
             { source = "nvim-lua/plenary.nvim" }
         }
     },
-    { source = "nvim-tree/nvim-web-devicons" },
     {
-	source = "goolord/alpha-nvim",
-	config = function()
-        local startify = require("alpha.themes.startify")
-        startify.file_icons.provider = "devicons"
-        require("alpha").setup(
-            startify.config
-        )
-    end,
+        source = "nvim-tree/nvim-web-devicons"
     },
-    { source = "nvim-lualine/lualine.nvim" },
+    {
+	    source = "goolord/alpha-nvim",
+	    config = function()
+            local startify = require("alpha.themes.startify")
+            startify.file_icons.provider = "devicons"
+            require("alpha").setup(startify.config)
+        end,
+    },
+    {
+        source = "nvim-lualine/lualine.nvim",
+    },
     { source = "hrsh7th/nvim-cmp" },
     { source = "hrsh7th/cmp-nvim-lsp" },
     { source = "hrsh7th/cmp-buffer" },
@@ -48,11 +56,12 @@ require("pam").manage({
     { source = "hrsh7th/cmp-nvim-lua" },
     { source = "williamboman/mason.nvim" },
     { source = "williamboman/mason-lspconfig.nvim" },
-    { source = "neovim/nvim-lspconfig",
+    {
+        source = "neovim/nvim-lspconfig",
         config = function()
             require("mason").setup()
             require("mason-lspconfig").setup({
-                ensure_installed = { "pyright", "gopls", "lua_ls" }
+                ensure_installed = { "pyright", "gopls", "lua_ls", "clangd" }
             })
 
             local nvim_lsp = require("lspconfig")
@@ -68,12 +77,30 @@ require("pam").manage({
             nvim_lsp.pyright.setup({ on_attach = on_attach })
             nvim_lsp.gopls.setup({ on_attach = on_attach })
             nvim_lsp.lua_ls.setup({ on_attach = on_attach })
+            nvim_lsp.clangd.setup({ on_attach = on_attach })
     	end,
-  },
-  { source="smithbm2316/centerpad.nvim" },
-  { source="OXY2DEV/markview.nvim" },
-  { source="lukas-reineke/indent-blankline.nvim" },
-  { source="marioortizmanero/adoc-pdf-live.nvim" },
+    },
+    {
+        source = "m4xshen/autoclose.nvim",
+        config = function ()
+            require("autoclose").setup()
+        end
+    },
+    { source = "smithbm2316/centerpad.nvim" },
+    { source = "OXY2DEV/markview.nvim" },
+    {
+        source = "lukas-reineke/indent-blankline.nvim",
+        config = function ()
+            require("ibl").setup()
+        end
+    },
+    {
+        source = "marioortizmanero/adoc-pdf-live.nvim",
+        config = function ()
+            require('adoc_pdf_live').setup()
+        end
+    },
+    { source = "numToStr/FTerm.nvim" },
 })
 
 local cmp = require'cmp'
@@ -117,13 +144,5 @@ cmp.setup({
 
 require("lualine").get_config()
 require("lualine").setup()
-
-require("ibl").setup()
-
-require('adoc_pdf_live').setup()
-
-require("rose-pine").setup({
-  variant = "default",
-})
 
 vim.cmd("colorscheme rose-pine")
