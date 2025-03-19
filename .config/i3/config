@@ -12,7 +12,7 @@
 set $mod Mod1
 
 # Wallpaper
-exec --no-startup-id feh --bg-scale $HOME/dotfiles/wallpapers/bg.jpg
+exec --no-startup-id feh --bg-scale $HOME/dotfiles/wallpapers/xp.jpg
 
 # Transparency
 exec_always --no-startup-id picom -f
@@ -22,7 +22,7 @@ exec --no-startup-id /usr/libexec/gsd-xsettings
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 12
+#font pango:monospace 12 # Replaced with Nerd Font below
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -37,7 +37,7 @@ exec --no-startup-id dex-autostart --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --color 000000 --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --color $bg-color --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -162,27 +162,27 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+    # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+    # back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -197,7 +197,7 @@ bindsym Print exec --no-startup-id flameshot gui -c --path $HOME/Pictures/Screen
 bindsym $mod+p exec --no-startup-id flameshot gui -c --path $HOME/Pictures/Screenshots/ --clipboard
 
 # Screen brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +20 
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +20
 bindsym XF86MonBrightnessDown exec --no-startup-id "if [ $(brightnessctl g) -gt 40 ]; then brightnessctl s 20-; else brightnessctl s 40; fi"
 
 # Deactivate gnome auto sleep
@@ -227,31 +227,23 @@ font pango:IosevkaTermSlab Nerd Font 16px
 # Gaps
 gaps inner 7
 
-# set primary Rosé Pine colorscheme colors
-set $base           #191724
-set $surface        #1f1d2e
-set $overlay        #26233a
-set $muted          #6e6a86
-set $subtle         #908caa
-set $text           #e0def4
-set $love           #eb6f92
-set $gold           #f6c177
-set $rose           #ebbcba
-set $pine           #31748f
-set $foam           #9ccfd8
-set $iris           #c4a7e7
-set $highlightlow   #21202e
-set $highlightmed   #403d52
-set $highlighthigh  #524f67
+# *** Oscura Color Scheme ***
+set $bg-color            #0B0B0F
+set $inactive-bg-color   #0B0B0F
+set $text-color          #E6E6E6
+set $inactive-text-color #9592A4
+set $urgent-bg-color     #D84F68
+set $accent-color        #E6E7A3
+set $indicator-color     #54C0A3
 
-# Teming border and Windows --------------
-# target                 title     bg    text   indicator  border
-client.focused           $iris     $iris $base  $iris      $iris
-client.focused_inactive  $text     $text $base  $subtle    $surface
-client.unfocused         $text     $text $base  $overlay   $overlay
-client.urgent            $love     $text $base  $love      $love
-client.placeholder       $base     $base $text  $overlay   $overlay
-client.background        $base
+# Theming border and Windows with Oscura Theme--------------
+# target                 title             background         text                 indicator          child_border
+client.focused           $accent-color      $bg-color          $text-color          $accent-color   $accent-color
+client.unfocused         $inactive-bg-color $inactive-bg-color $inactive-text-color $inactive-bg-color $inactive-bg-color
+client.focused_inactive  $inactive-bg-color $inactive-bg-color $inactive-text-color $inactive-bg-color $inactive-bg-color
+client.urgent            $urgent-bg-color   $urgent-bg-color   $text-color          $urgent-bg-color   $urgent-bg-color
+client.placeholder       $bg-color          $bg-color          $text-color          $inactive-bg-color $inactive-bg-color
+client.background        $bg-color
 
 # Barra de estado
 bar {
@@ -261,15 +253,15 @@ bar {
     position top
 
     colors {
-        background $base
-        statusline $text
-        separator  $iris
+        background $bg-color
+        statusline $text-color
+        separator  $inactive-text-color
 
         # Workspaces en la barra
-        focused_workspace   $text       $text       $base
-        active_workspace    $base       $base       $text
-        inactive_workspace  $base       $base       $text
-        urgent_workspace    $love       $love       $base
-        binding_mode        $pine       $pine       $base
+        focused_workspace   $accent-color      $bg-color          $accent-color
+        active_workspace    $bg-color          $bg-color          $text-color
+        inactive_workspace  $bg-color          $bg-color          $inactive-text-color
+        urgent_workspace    $urgent-bg-color   $urgent-bg-color   $text-color
+        binding_mode        $accent-color      $bg-color          $text-color
     }
 }
