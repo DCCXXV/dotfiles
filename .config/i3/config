@@ -12,7 +12,7 @@
 set $mod Mod1
 
 # Wallpaper
-exec --no-startup-id feh --bg-scale $HOME/dotfiles/wallpapers/xp.jpg
+exec --no-startup-id feh --bg-scale $HOME/dotfiles/wallpapers/bl3.png
 
 # Transparency
 exec_always --no-startup-id picom -f
